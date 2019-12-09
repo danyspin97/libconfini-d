@@ -1,0 +1,1 @@
+option('generate_dub_file', type: 'boolean', value: false, description: 'Generate a dub.json file for the dub registry')
