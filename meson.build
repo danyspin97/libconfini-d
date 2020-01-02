@@ -1,8 +1,8 @@
-project('libconfini-d', 'd', version: 'v1.12.0')
+project('libconfini-d', 'd', version: '1.12.0')
 
 libconfini_c = dependency('libconfini')
 
-install_headers('deimos/confini.d', subdir: 'd/')
+install_headers('deimos/confini.d', subdir: 'd/libconfini-d')
 
 if get_option('generate_dub_file')
     dlang = import('dlang')
@@ -19,3 +19,11 @@ if get_option('generate_dub_file')
     )
 endif
 
+pkg = import('pkgconfig')
+
+pkg.generate(name: 'libconfini-d',
+    subdirs: 'd/libconfini-d',
+    version: meson.project_version(),
+    description: 'D bindings for the libconfini library.',
+    dependencies: libconfini_c,
+)
